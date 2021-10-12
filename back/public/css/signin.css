@@ -1,0 +1,50 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  color: white;
+  background-image: radial-gradient(circle at 87.04% 18.92%, #00ffff 0, #40f6ff 25%, #53bcf2 50%, #4f86aa 75%, #42586c 100%);
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  background-image: radial-gradient(circle at 87.04% 18.92%, #00ffff 0, #40f6ff 25%, #53bcf2 50%, #4f86aa 75%, #42586c 100%);
+  border-color: #00365e;
+  color: white;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-image: radial-gradient(circle at 87.04% 18.92%, #00ffff 0, #40f6ff 25%, #53bcf2 50%, #4f86aa 75%, #42586c 100%);
+  border-color: #00365e;
+  color: white;
+}
+
+.btn{
+  background-color: #00365e;
+  border-color: #00365e;
+  
+}
