@@ -14,79 +14,81 @@
     <!-- JS -->
     <script src="js/jquery-3.2.1.min.js"></script>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <link href="css/signin.css" rel="stylesheet">>
+    <link href="css/styleRegis.css" rel="stylesheet">
     <title>Registro - Devs Core</title>
 </head>
-<body>
-
-<section class="material-half-bg">
-    <div class="cover"></div>
-</section>
-
-<section class="login-content">
-    <div class="logo">
+<body id= "registerB">
+    <div id="logoText">
         <h1>Devs Core</h1>
     </div>
-
-    <div class="login-box">
-        <form  method="post" action="/registro">
-            <h3 class="login-head">
-                <i class="fa fa-lg fa-fw fa-user"></i><span>Regístrate</span>
-            </h3>
-
-            <div class="form-group">
-                <label class="control-label">Usuario</label>
-                <input class="form-control" type="text" id="usuario" placeholder="Usuario" autofocus
-                       name="username" required="true" >
-            </div>
-
-            <div class="form-group">
-                <label class="control-label">Email</label>
-                <input class="form-control" id="email" type="email" placeholder="Email" autofocus
-                       name="email" required="true">
-            </div>
-
-            <div class="form-group">
-                <label class="control-label">Password</label>
-                <input class="form-control" id="pass" type="password" placeholder="Password"
-                       name="password" required="true">
-            </div>
-
-            <div class="form-group">
-                <label class="control-label">Repite Password</label>
-                <input class="form-control" id="rep_pass" type="password" placeholder="Password"
-                       name="passwordConfirm" required="true">
-            </div>
-
-            <div class="form-group btn-container">
-                <button id="registro" class="btn btn-primary btn-block" type="submit">
-                    <i class="fa fa-sign-in fa-lg fa-fw"></i><span>Registro</span>
-                </button>
-            </div>
-
-        </form>
-
-
+<div id="login-content">
+    <div id = "contenedorcentrado">
+        <div id="imagenLogin">
+            <form  method="post" action="/registro">
+                <h3 class="login-head">
+                    <i class="fa fa-lg fa-fw fa-user"></i><span>Regístrate</span>
+                </h3>
+    
+                <div class="form-group">
+                    <label class="control-label">Nombre(s)</label>
+                    <input class="form-control" type="text" id="nombres" placeholder="Nombre(s)" autofocus
+                           name="username" required="true" >
+                </div>
+    
+                <div class="form-group">
+                    <label class="control-label">Primer Apellido</label>
+                    <input class="form-control" type="text" id="primerA" placeholder="Primer Apellido" autofocus
+                           name="username" required="true" >
+                </div>
+    
+                <div class="form-group">
+                    <label class="control-label">Segundo Apellido</label>
+                    <input class="form-control" type="text" id="segundoA" placeholder="Segundo Apellido" autofocus
+                           name="username" required="true" >
+                </div>
+    
+                <div class="form-group">
+                    <label class="control-label">Email</label>
+                    <input class="form-control" id="email" type="email" placeholder="Email" autofocus
+                           name="email" required="true">
+                </div>
+    
+                <div class="form-group">
+                    <label class="control-label">Password</label>
+                    <input class="form-control" id="pass" type="password" placeholder="Password"
+                           name="password" required="true">
+                </div>
+    
+                <div class="form-group">
+                    <label class="control-label">Repite Password</label>
+                    <input class="form-control" id="rep_pass" type="password" placeholder="Password"
+                           name="passwordConfirm" required="true">
+                </div>
+    
+                <div class="form-group">
+                    <label class="control-label">Imagen</label>                
+                    <input class="form-control" type="file" name="myFoto" accept="image/png, image/jpeg">
+                </div>
+                <div class="form-group">
+                    <label  class="control-label">Fecha de nacimiento:</label>
+                    <input class="form-control" type="date" id="fechaNacimiento" name="trip-start" value="2018-07-22"
+           min="1960-01-01" max="2021-12-31">
+                </div>
+                <div class="form-group btn-container">
+                    <button id="registro" class="btn btn-primary btn-block" type="submit">
+                        <i class="fa fa-sign-in fa-lg fa-fw"></i><span>Registro</span>
+                    </button>
+                </div>
+    
+            </form>
+        </div>
+        <div id="derecho">
+            <img src="https://anthoncode.com/wp-content/uploads/2019/12/desarrollador-dicese-de-quien-aprovecha-todo-momento-para-iniciar-un-gran-proyecto.jpg" width="460" height="460">
+        </div>
     </div>
-
-</section>
+</div>
 
 </body>
 <!-- JS -->
