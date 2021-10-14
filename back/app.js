@@ -4,7 +4,9 @@ dotenv.config();
 const sequileze = require('./db/conexion');
 const cookieParser = require('cookie-parser')
 const app = express();
-const indexView = require('./view/indexView.js')
+const indexView = require('./view/indexView')
+const registerUser = require('./view/registerView');
+const registerView = require('./view/registerView');
 app.use(express.json())
 
 app.use(cookieParser())
@@ -29,3 +31,4 @@ serverStart();
 
 //Iniciamos vistas
 indexView(app);
+registerView(app);
