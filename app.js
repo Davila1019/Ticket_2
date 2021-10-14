@@ -1,7 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 dotenv.config();
-const sequileze = require('./db/conexion');
+const sequileze = require('./back/db/conexion');
 const cookieParser = require('cookie-parser')
 const app = express();
 const indexView = require('./view/indexView')
