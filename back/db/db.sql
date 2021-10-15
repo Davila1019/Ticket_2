@@ -71,3 +71,15 @@ ALTER TABLE users ALTER COLUMN PASSWORD NVARCHAR(255)
 
 ALTER TABLE connect_friends ADD [status] BIT NOT NULL
 GO
+
+--SELECT id_friend, names FROM connect_friends where 1 = connect_friends.id_user
+
+--UPDATE connect_friends SET [status]= '1' WHERE id_user= '1' AND  id_friend = '4'
+
+--DELETE users WHERE id_user = 3
+
+--DELETE connect_friends WHERE id_friend = 4
+
+--SELECT * FROM connect_friends
+
+--SELECT * FROM users
