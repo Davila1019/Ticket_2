@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser')
 const indexView = require('./back/view/indexView')
 const registerView = require('./back/view/registerView');
 const friendView = require('./back/view/friendsView')
+const loginView = require('./back/view/loginView')
 const app = express();
 app.use(express.json())
 app.use(express.urlencoded({extended:false  }))
@@ -32,6 +33,8 @@ async function serverStart() {
 serverStart();
 
 //Iniciamos vistas
+
 indexView(app);
 registerView(app);
 friendView(app);
+loginView(app);

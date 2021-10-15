@@ -1,69 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="es">
+<!-- HEAD -->
+<head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="generator" content="Hugo 0.87.0">
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <title>Devs Core</title>
+    <!-- CSS-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap1.css">
+    <!-- Font-awesome-->
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
+    <title>DevsCore </title>
+</head>
+<body class="app sidebar-mini">
+<!-- Nav-->
+<nav>
+    <header class="app-header">
+        <a class="app-header__logo" href="/">DevsCore</a>
+        <!-- Sidebar toggle button-->
+        <a class="app-sidebar__toggle" href="#" data-toggle="sidebar"></a>
+        <!-- Nav Right Menu-->
+        <ul class="app-nav">
+            <li class="app-search">
+                <form  method="get" action="/panel">
+                    <input class="app-search__input" type="search" name="busqueda"
+                           placeholder="Buscar Post">
+                    <button class="app-search__button" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
 
+            </li>
+            <!-- User Menu-->
+            <li class="dropdown"><a class="app-nav__item" href="#"
+                                    data-toggle="dropdown"><i class="fa fa-user fa-lg"></i> Perfil</a>
+                <ul class="dropdown-menu settings-menu dropdown-menu-right">
+                    <li><a class="dropdown-item" href="/users/perfil/?username={{ usuario.username }}"><i
+                            class="fa fa-user fa-lg"></i> Perfil </a></li>
+                    <li><a class="dropdown-item" href="/logout" id="logout"><i
+                            class="fa fa-sign-out fa-lg"></i> Cerrar sesion </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+        <div class="app-sidebar__user">
+            <img class="app-sidebar__user-avatar"
+                 src="https://ssl.gstatic.com/images/branding/product/1x/avatar_circle_blue_512dp.png"
+                 alt="User Image" width="48" height="48">
+            <div>
+
+
+            </div>
+        </div>
+        <ul class="app-menu">
+            <li><a class="app-menu__item" href="/"><i
+                    class="app-menu__icon fa fa-dashboard"></i><span
+                    class="app-menu__label">Panel</span></a></li>
+            <li class="treeview"><a id="posts" class="app-menu__item" href="#"
+                                    data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span
+                    class="app-menu__label">Mis datos</span><i
+                    class="treeview-indicator fa fa-angle-right"></i></a>
+                <ul class="treeview-menu" id="desplieguePosts">
+                    <li><a class="treeview-item" href=""><i
+                            class="icon fa fa-circle-o"></i> Agregar Informacion </a></li>
+                    <li><a class="treeview-item" href="/post/list"><i
+                            class="icon fa fa-circle-o"></i> Editar Informacion </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview"><a id="usuarios" class="app-menu__item" href="#"
+                                    data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span
+                    class="app-menu__label">Amigos</span><i
+                    class="treeview-indicator fa fa-angle-right"></i></a>
+                <ul class="treeview-menu" id="despliegueUsuarios">
+                    <li><a class="treeview-item" href="/views/users/lista-amigos.html"><i
+                            class="icon fa fa-circle-o"></i> Mis amigos </a></li>
+                    <li><a class="treeview-item" href="/views/users/lista-peticiones.html"><i
+                            class="icon fa fa-circle-o"></i> Peticiones de amistad </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+</nav>
+    <!-- Contenido -->
+    <main class="app-content"> <!-- Titulo-Cabecera -->
+        <div class="app-title">
+            <div>
+                <h1>
+                    <i class="fa fa-dashboard"></i> Bienvenido
+                </h1>
+                <p>A el lugar donde todos nos conectamos</p>
+            </div>
+        </div>
     
+        <div class="row">
+            <div class="col-md-6 col-lg-3">
+                <div class="widget-small primary coloured-icon">
+                    <i class="icon fa fa-users fa-3x"></i>
+                    <div class="info">
+                        <h4>Amigos</h4>
+                        <p>
+                            <b>{{ numAmigos }}</b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="widget-small danger coloured-icon">
+                    <i class="icon fa fa-comment fa-3x"></i>
+                    <div class="info">
+                        <h4>Comentarios</h4>
+                        <p>
+                            <b>{{ numComentarios }}</b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <br>
+    
+    
+    
+    </main>
+        
+<!-- JS -->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src = "js/main.js"></script>
 
-    <!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
+<script>
+    var mensaje = getUrlParameter('mensaje');
+    var tipoMensaje = getUrlParameter('tipoMensaje');
+    if (mensaje != "") {
+        if (tipoMensaje == "") {
+            tipoMensaje = 'alert-info';
+            $.notify({
+                title: "",
+                message: mensaje,
+                icon: 'fa fa-check'
+            },{
+                type: "info"
+            });
+        }else if(tipoMensaje == "error"){
+            $.notify({
+                title: "Error: ",
+                message: mensaje,
+                icon: 'fa fa-error'
+            },{
+                type: "danger"
+            });
         }
-      }
-    </style>
-
-    
-    <!-- Custom styles for this template -->
-    <link href="css/signin.css" rel="stylesheet">
-  </head>
-  <body class="text-center">
-    
-<main class="form-signin">
-   <div class="logo">
-        <h1>Devs Core</h1>
-    </div>
-  <form>
-    <i class='bx bxs-user-circle bx-lg'></i>
-    <h1 class="h3 mb-3 fw-normal">Log in</h1>
-
-    <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
-    </div>
-
-    <div style="display: flex; align-items: initial; justify-content: space-around;">
-      <button class="w-40 btn btn-lg btn-dark" class="btn" type="submit">Log in</button>
-      <a href="/registerUser" class="w-40 btn btn-lg btn-dark" class="btn">Registarme</a>
-    </div>
-    
-    <p class="mt-5 mb-3 text-muted">El lugar donde todos conectamos! <br> 2017–2021 &copy;</p>
-  </form>
-</main>
 
 
-    
-  </body>
+    }
+
+    function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    };
+</script>
+
+</body>
+
 </html>

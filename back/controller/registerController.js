@@ -6,7 +6,7 @@ module.exports.register = async(user) => {
     let register = new registerModel();
     let data = await register.register(user);
 
-    if(data == "Usuario registrado"){
+    if(data){
         return "usuario registrado"
     }
     else{
