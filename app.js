@@ -4,8 +4,11 @@ dotenv.config();
 const sequileze = require('./back/db/conexion');
 const cookieParser = require('cookie-parser')
 const app = express();
-const indexView = require('./back/view/indexView.js')
+const loginView = require('./back/view/loginView')
+const registerView = require('./back/view/registerView')
+const indexView = require('./back/view/indexView')
 app.use(express.json())
+app.use(express.urlencoded({extended:false  }))
 
 app.use(cookieParser())
 
@@ -28,4 +31,6 @@ async function serverStart() {
 serverStart();
 
 //Iniciamos vistas
+loginView(app);
+registerView(app);
 indexView(app);
