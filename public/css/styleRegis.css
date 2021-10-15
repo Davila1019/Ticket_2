@@ -76,3 +76,7 @@
   #logoText{
       text-align: center;
   }
+
+  ::-webkit-scrollbar {
+    width: .2px;
+  }

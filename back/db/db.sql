@@ -7,7 +7,6 @@ USE social
 CREATE TABLE users(
     id_user INT NOT NULL IDENTITY (1,1),
     [names] NVARCHAR(50) NOT NULL,
-    -- Fecha de nacimiento reemplaza a edad: esto para obtener la edad y evitar al usuario estar actulizando su edad 
     f_last_name NVARCHAR(50) NOT NULL,
     s_last_name NVARCHAR(50) NOT NULL,
     email NVARCHAR(50) NOT NULL,
@@ -48,7 +47,6 @@ CREATE TABLE connect_friends(
     id_connect_friends INT NOT NULL IDENTITY (1,1),
     id_friend INT NOT NULL,
     id_user INT NOT NULL,
-    ---[status]  podemos agreagr un status para saber en que estado esta la solicitud de amistad
     PRIMARY KEY (id_connect_friends),
     FOREIGN KEY(id_user) REFERENCES users(id_user)
 )
