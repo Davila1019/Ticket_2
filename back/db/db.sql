@@ -1,5 +1,8 @@
+
 CREATE DATABASE social
 GO
+
+USE social
 
 CREATE TABLE users(
     id_user INT NOT NULL IDENTITY (1,1),
@@ -31,52 +34,13 @@ GO
 
 CREATE TABLE tecnologies(
     id_tecnologies INT NOT NULL IDENTITY (1,1),
-    node_js TINYINT(6) NOT NULL,
-    frontend  TINYINT(6) NOT NULL,
-    swagger  TINYINT(6) NOT NULL,
-    javascript  TINYINT(6) NOT NULL,
+    node_js TINYINT NOT NULL,
+    frontend  TINYINT NOT NULL,
+    swagger  TINYINT NOT NULL,
+    javascript  TINYINT NOT NULL,
     id_us_tec INT NOT NULL,
     PRIMARY KEY (id_tecnologies),
     FOREIGN KEY(id_us_tec) REFERENCES users(id_user)
-)
-GO
-
-CREATE TABLE knowledge(
-    id_knowledge INT NOT NULL IDENTITY (1,1),
-    data_base TINYINT(6) NOT NULL,
-    apis TINYINT(6) NOT NULL,
-    testings TINYINT(6) NOT NULL,
-    [security] TINYINT(6) NOT NULL,
-    seguridad  TINYINT(6) NOT NULL,
-    object_theory TINYINT(6) NOT NULL,
-    id_us_kn INT NOT NULL,
-    PRIMARY KEY (id_knowledge),
-    FOREIGN KEY(id_us_kn) REFERENCES users(id_user)
-)
-GO
-
-CREATE TABLE soft_skills(
-    id_soft INT NOT NULL IDENTITY (1,1),
-    focused TINYINT(6) NOT NULL,
-    team_work TINYINT(6) NOT NULL,
-    engaged TINYINT(6) NOT NULL,
-    comunication TINYINT(6) NOT NULL,
-    learning_ability  TINYINT(6) NOT NULL,
-    troubleshooting TINYINT(6) NOT NULL,
-    id_us_soft INT NOT NULL,
-    PRIMARY KEY (id_soft),
-    FOREIGN KEY(id_us_soft) REFERENCES users(id_user)
-)
-GO
-
-CREATE TABLE performance(
-    id_performance INT NOT NULL IDENTITY (1,1),
-    code_quality TINYINT(6) NOT NULL,
-    delivery_speed TINYINT(6) NOT NULL,
-    code_performance TINYINT(6) NOT NULL,
-    id_us_per INT NOT NULL,
-    PRIMARY KEY (id_performance),
-    FOREIGN KEY(id_us_per) REFERENCES users(id_user)
 )
 GO
 
@@ -106,3 +70,6 @@ GO
 ALTER TABLE users ADD  date_of_birth DATE NOT NULL
 GO
 ALTER TABLE users ALTER COLUMN PASSWORD NVARCHAR(255)
+
+ALTER TABLE connect_friends ADD [status] BIT NOT NULL
+GO

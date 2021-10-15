@@ -3,16 +3,11 @@ const dotenv = require('dotenv');
 dotenv.config();
 const sequileze = require('./back/db/conexion');
 const cookieParser = require('cookie-parser')
-const app = express();
-<<<<<<< HEAD
-const indexView = require('./view/indexView')
-const registerUser = require('./view/registerView');
-const registerView = require('./view/registerView');
-=======
-const loginView = require('./back/view/loginView')
-const registerView = require('./back/view/registerView')
+
 const indexView = require('./back/view/indexView')
->>>>>>> 680e2b8f9ff96bc9c04ab94231034bae7f1f358b
+const registerView = require('./back/view/registerView');
+const friendView = require('./back/view/friendsView')
+const app = express();
 app.use(express.json())
 app.use(express.urlencoded({extended:false  }))
 
@@ -37,11 +32,6 @@ async function serverStart() {
 serverStart();
 
 //Iniciamos vistas
-<<<<<<< HEAD
 indexView(app);
 registerView(app);
-=======
-loginView(app);
-registerView(app);
-indexView(app);
->>>>>>> 680e2b8f9ff96bc9c04ab94231034bae7f1f358b
+friendView(app);
