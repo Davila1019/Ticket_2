@@ -99,3 +99,10 @@ CREATE TABLE feed_back(
     FOREIGN KEY(id_user) REFERENCES users(id_user)
 )
 GO
+
+
+ALTER TABLE users DROP COLUMN image_url
+GO
+ALTER TABLE users ADD  date_of_birth DATE NOT NULL
+GO
+ALTER TABLE users ALTER COLUMN PASSWORD NVARCHAR(255)

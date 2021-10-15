@@ -20,7 +20,7 @@ module.exports = class registerModel{
 
             await sequelize.query(`INSERT INTO users (names, f_last_name, s_last_name, email, [password], date_of_birth) VALUES (?,?,?,?,?,?)`,
             {replacements: newUser, type: sequelize.QueryTypes.SELECT});
-            return "Usuario fegistrado"
+            return "Usuario registrado"
        }
        catch{
             console.log("error");
