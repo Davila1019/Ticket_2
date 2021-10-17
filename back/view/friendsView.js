@@ -18,7 +18,7 @@ module.exports = async (app) => {
         res.send(data)
     });
 
-    app.get('/friendsAccept',async(req,res) => {
+    app.post('/friendsAccept',async(req,res) => {
         let info = req.body;
         console.log(info);
         let data = await friendsController.acceptRequest(info);

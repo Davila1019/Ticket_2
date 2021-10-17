@@ -58,6 +58,7 @@ module.exports = class registerModel{
     async accept(info){
         if(info != undefined){
             try{
+                //Agregar registro para id_friend
                 let result = await sequelize.query("UPDATE connect_friends SET [status]= '1' WHERE id_user= '" + info.id_user+"' AND  id_friend = '" + info.id_friend+"'" );
                 return result;
             }
