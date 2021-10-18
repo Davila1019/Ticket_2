@@ -9,5 +9,9 @@ module.exports = async (app) => {
      app.get('/agregarInfo',async(req,res) => {
         res.render('formDatos')
     });
+    
+     app.get('/editInfo',async(req,res) => {
+        res.render('editInfo')
+    });
 };
 
