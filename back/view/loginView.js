@@ -1,5 +1,6 @@
 const loginController = require('../controller/loginController')
 
+
 module.exports = async (app) => {
     app.get('/login',async(req,res) => {
         res.render('login')
@@ -13,6 +14,7 @@ module.exports = async (app) => {
             httpOnly: true
             }
             res.cookie('jwt', login, cookieOptions)
+            console.log(login)
             res.redirect('/')
        }
        else{

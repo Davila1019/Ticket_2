@@ -52,8 +52,10 @@
             <img class="app-sidebar__user-avatar"
                  src="https://ssl.gstatic.com/images/branding/product/1x/avatar_circle_blue_512dp.png"
                  alt="User Image" width="48" height="48">
+           
             <div>
-
+                <h4 style="color: aliceblue;"><%= data.data.names %> </h4>
+                <h6 style="color: aliceblue;"><%= data.data.f_last_name %> <%= data.data.s_last_name %>  </h6>
 
             </div>
         </div>
@@ -78,7 +80,7 @@
                     class="app-menu__label">Amigos</span><i
                     class="treeview-indicator fa fa-angle-right"></i></a>
                 <ul class="treeview-menu" id="despliegueUsuarios">
-                    <li><a class="treeview-item" href="/views/users/lista-amigos.html"><i
+                    <li><a class="treeview-item" href="myFriends/<%= data.data.id_user %> "  ><i
                             class="icon fa fa-circle-o"></i> Mis amigos </a></li>
                     <li><a class="treeview-item" href="/views/users/lista-peticiones.html"><i
                             class="icon fa fa-circle-o"></i> Peticiones de amistad </a>
@@ -106,7 +108,7 @@
                     <div class="info">
                         <h4>Amigos</h4>
                         <p>
-                            <b>{{ numAmigos }}</b>
+                            <b onclick="alertCookie()">{{ numAmigos }}</b>
                         </p>
                     </div>
                 </div>
@@ -131,10 +133,10 @@
     </main>
         
 <!-- JS -->
-<script src="js/jquery-3.2.1.min.js"></script>
+<script src="/js/jquery-3.2.1.min.js"></script>
 <script src="/js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src = "js/main.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src = "/js/main.js"></script>
 
 <script>
     var mensaje = getUrlParameter('mensaje');
@@ -168,6 +170,12 @@
         var results = regex.exec(location.search);
         return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     };
+
+    function alertCookie() {
+        let cookies = document.cookies;
+        console.log(cookies);
+        alert(document.cookie);
+    }
 </script>
 
 </body>

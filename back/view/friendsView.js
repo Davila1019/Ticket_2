@@ -1,5 +1,6 @@
 const friendsController = require('../controller/friendsController')
-
+const jwt = require('jsonwebtoken');
+const {promisify} = require('util');
 
 module.exports = async (app) => {
 
@@ -7,6 +8,7 @@ module.exports = async (app) => {
         let friend = req.body;
         console.log(friend);
         let data = await friendsController.request(req.body);
+        
         console.log('Data',data)
         res.send(data)
     });
@@ -28,8 +30,12 @@ module.exports = async (app) => {
     app.get('/myFriends/:id',async(req,res) => {
         let id = req.params.id;
         let response = await friendsController.getMyFriends(id);
-        let data = response[0];
-        res.send(data)
+        let dataf = response[0];
+        console.log(dataf);
+        const data = await promisify(jwt.verify)(req.cookies.jwt, process.env.KEY)
+        console.log(data);
+        res.render('myfriends',{dataf,data})
+       
     });
 
     app.get('/allFriends',async(req,res) => {
