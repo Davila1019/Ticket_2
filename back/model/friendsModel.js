@@ -59,8 +59,11 @@ module.exports = class registerModel{
         if(info != undefined){
             try{
                 //Agregar registro para id_friend
-                let result = await sequelize.query("UPDATE connect_friends SET [status]= '1' WHERE id_user= '" + info.id_user+"' AND  id_friend = '" + info.id_friend+"'" );
-                return result;
+                await sequelize.query("UPDATE connect_friends SET [status]= '1' WHERE id_user= '" + info.id_user+"' AND  id_friend = '" + info.id_friend+"'" );
+                let res = await sequelize.query("SELECT names FROM users WHERE id_user = '" + info.id_user+"'" );
+                
+                let data = await sequelize.query(`INSERT INTO connect_friends (id_friend, id_user, [status], names) VALUES ('`+info.id_user+`','`+info.id_friend+`','1','`+res[0][0].names+`')`)
+                return data ;
             }
             catch{
                 return false;

@@ -15,8 +15,10 @@ module.exports = async (app) => {
     app.get('/friendsRequest/:id',async(req,res) => {
         let id = req.params.id;
         let response = await friendsController.getRequest(id);
-        let data = response[0];
-        res.send(data)
+        let friendsreq = response[0];
+        console.log(friendsreq)
+        const data = await promisify(jwt.verify)(req.cookies.jwt, process.env.KEY)
+        res.render('friendsreq',{data,friendsreq})
     });
 
     app.post('/friendsAccept',async(req,res) => {
