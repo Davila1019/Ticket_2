@@ -8,7 +8,6 @@ module.exports = async (app) => {
         let friend = req.body;
         console.log(friend);
         let data = await friendsController.request(req.body);
-        
         console.log('Data',data)
         res.send(data)
     });
@@ -40,7 +39,9 @@ module.exports = async (app) => {
 
     app.get('/allFriends',async(req,res) => {
         let response = await friendsController.getAllFriends();
-        let data = response[0];
-        res.send(data)
+        let friends = response[0];
+        const data = await promisify(jwt.verify)(req.cookies.jwt, process.env.KEY)
+        console.log(friends);
+        res.render('addfriends',{data,friends})
     });
 };
