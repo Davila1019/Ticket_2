@@ -22,19 +22,10 @@
         <a class="app-sidebar__toggle" href="#" data-toggle="sidebar"></a>
         <!-- Nav Right Menu-->
         <ul class="app-nav">
-            <li class="app-search">
-                <form  method="get" action="/panel">
-                    <input class="app-search__input" type="search" name="busqueda"
-                           placeholder="Buscar Post">
-                    <button class="app-search__button" type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </form>
-
-            </li>
+            
             <!-- User Menu-->
             <li class="dropdown"><a class="app-nav__item" href="#"
-                                    data-toggle="dropdown"><i class="fa fa-user fa-lg"></i> Perfil</a>
+                                    data-toggle="dropdown"><i class="fa fa-user fa-lg"></i> <%= data.data.names %></a>
                 <ul class="dropdown-menu settings-menu dropdown-menu-right">
                     <li><a class="dropdown-item" href="/users/perfil/?username={{ usuario.username }}"><i
                             class="fa fa-user fa-lg"></i> Perfil </a></li>
@@ -60,9 +51,7 @@
             </div>
         </div>
         <ul class="app-menu">
-            <li><a class="app-menu__item" href="/"><i
-                    class="app-menu__icon fa fa-dashboard"></i><span
-                    class="app-menu__label">Panel</span></a></li>
+            
             <li class="treeview"><a id="posts" class="app-menu__item" href="#"
                                     data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span
                     class="app-menu__label">Mis datos</span><i
@@ -91,46 +80,7 @@
     </aside>
 </nav>
     <!-- Contenido -->
-    <main class="app-content"> <!-- Titulo-Cabecera -->
-        <div class="app-title">
-            <div>
-                <h1>
-                    <i class="fa fa-dashboard"></i> Bienvenido
-                </h1>
-                <p>A el lugar donde todos nos conectamos</p>
-            </div>
-        </div>
     
-        <div class="row">
-            <div class="col-md-6 col-lg-3">
-                <div class="widget-small primary coloured-icon">
-                    <i class="icon fa fa-users fa-3x"></i>
-                    <div class="info">
-                        <h4>Amigos</h4>
-                        <p>
-                            <b onclick="alertCookie()">{{ numAmigos }}</b>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="widget-small danger coloured-icon">
-                    <i class="icon fa fa-comment fa-3x"></i>
-                    <div class="info">
-                        <h4>Comentarios</h4>
-                        <p>
-                            <b>{{ numComentarios }}</b>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <br>
-    
-    
-    
-    </main>
         
 <!-- JS -->
 <script src="/js/jquery-3.2.1.min.js"></script>

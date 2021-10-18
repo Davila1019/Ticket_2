@@ -5,6 +5,7 @@ const {promisify} = require('util');
 module.exports = async (app) => {
     app.get('/',isAuthenticated.isAuthenticated,async(req,res) => {
         const data = await promisify(jwt.verify)(req.cookies.jwt, process.env.KEY)
+        console.log(data)
         res.render('index',{data})
     });
     
