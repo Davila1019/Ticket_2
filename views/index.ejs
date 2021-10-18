@@ -41,7 +41,7 @@
     <aside class="app-sidebar">
         <div class="app-sidebar__user">
             <img class="app-sidebar__user-avatar"
-                 src="https://ssl.gstatic.com/images/branding/product/1x/avatar_circle_blue_512dp.png"
+                 src="https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
                  alt="User Image" width="48" height="48">
            
             <div>
@@ -54,14 +54,11 @@
             
             <li class="treeview"><a id="posts" class="app-menu__item" href="#"
                                     data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span
-                    class="app-menu__label">Mis datos</span><i
+                    class="app-menu__label">Mis perfil</span><i
                     class="treeview-indicator fa fa-angle-right"></i></a>
                 <ul class="treeview-menu" id="desplieguePosts">
                     <li><a class="treeview-item" href=""><i
-                            class="icon fa fa-circle-o"></i> Agregar Informacion </a></li>
-                    <li><a class="treeview-item" href="/post/list"><i
-                            class="icon fa fa-circle-o"></i> Editar Informacion </a>
-                    </li>
+                            class="icon fa fa-circle-o"></i> Ver información </a></li>
                 </ul>
             </li>
             <li class="treeview"><a id="usuarios" class="app-menu__item" href="#"
@@ -72,8 +69,21 @@
                     <li><a class="treeview-item" href="myFriends/<%= data.data.id_user %> "  ><i
                             class="icon fa fa-circle-o"></i> Mis amigos </a></li>
                     <li><a class="treeview-item" href="/views/users/lista-peticiones.html"><i
-                            class="icon fa fa-circle-o"></i> Peticiones de amistad </a></li>
-                    
+                            class="icon fa fa-circle-o"></i> Peticiones de amistad </a>
+                    </li>
+                    <li><a class="treeview-item" href="/views/users/lista-peticiones.html"><i
+                            class="icon fa fa-circle-o"></i> Buscar amigos </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview"><a id="usuarios" class="app-menu__item" href="#"
+                                    data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span
+                    class="app-menu__label">Comentarios</span><i
+                    class="treeview-indicator fa fa-angle-right"></i></a>
+                <ul class="treeview-menu" id="despliegueUsuarios">
+                    <li><a class="treeview-item" href=""><i
+                            class="icon fa fa-circle-o"></i> Ver comentarios </a>
+                    </li>
                 </ul>
             </li>
         </ul>
