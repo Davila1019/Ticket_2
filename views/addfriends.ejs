@@ -41,7 +41,7 @@
                         <div class="info" style="display: flex; justify-content:space-around; align-items: center;">
                             <h4><%= friends[i].names %> </h4>
                             <p>
-                                <button class="btn btn-dark" onclick="sendReq( '<%- friends[i].id_user%>','<%-  data.data.id_user %>','<%- friends[i].names%>' )">Agregar</button>
+                                <button class="btn btn-dark" onclick="sendReq( '<%- friends[i].id_user%>','<%-  data.data.id_user %>','<%- data.data.names%>' )">Agregar</button>
                                 
                             </p>
                         </div>

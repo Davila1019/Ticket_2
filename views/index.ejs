@@ -29,7 +29,7 @@
                 <ul class="dropdown-menu settings-menu dropdown-menu-right">
                     <li><a class="dropdown-item" href="/users/perfil/?username={{ usuario.username }}"><i
                             class="fa fa-user fa-lg"></i> Perfil </a></li>
-                    <li><a class="dropdown-item" href="/logout" id="logout"><i
+                    <li><a class="dropdown-item" onclick="delAut()" id="logout"><i
                             class="fa fa-sign-out fa-lg"></i> Cerrar sesion </a>
                     </li>
                 </ul>
@@ -135,6 +135,13 @@
         let cookies = document.cookies;
         console.log(cookies);
         alert(document.cookie);
+    }
+
+    function delAut(){
+        document.cookie.split(";").forEach(function(c) {
+          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+        });
+        window.location = '/login'
     }
 </script>
 

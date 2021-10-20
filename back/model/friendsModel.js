@@ -1,3 +1,4 @@
+const { error } = require('console');
 const sequelize = require('../db/conexion');
 
 module.exports = class registerModel{
@@ -24,7 +25,7 @@ module.exports = class registerModel{
     async getFriendsReq(iduser){
         
         try{
-            let result = await sequelize.query("SELECT id_friend, names FROM connect_friends WHERE '"+ iduser +"' = connect_friends.id_user AND [status] = 0" );
+            let result = await sequelize.query("SELECT id_user, names FROM connect_friends WHERE '"+ iduser +"' = connect_friends.id_friend AND [status] = 0" );
             return result;
         }
         catch{
@@ -36,7 +37,7 @@ module.exports = class registerModel{
     async getMyFriends(iduser){
         
         try{
-            let result = await sequelize.query("SELECT id_friend, names FROM connect_friends WHERE '"+ iduser +"' = connect_friends.id_user AND [status] = '1'");
+            let result = await sequelize.query("SELECT id_friend, names FROM connect_friends WHERE '"+ iduser +"' = connect_friends.id_friend AND [status] = '1'");
             return result;
         }
         catch{
@@ -59,14 +60,15 @@ module.exports = class registerModel{
         if(info != undefined){
             try{
                 //Agregar registro para id_friend
-                await sequelize.query("UPDATE connect_friends SET [status]= '1' WHERE id_user= '" + info.id_user+"' AND  id_friend = '" + info.id_friend+"'" );
-                let res = await sequelize.query("SELECT names FROM users WHERE id_user = '" + info.id_user+"'" );
-                
-                let data = await sequelize.query(`INSERT INTO connect_friends (id_friend, id_user, [status], names) VALUES ('`+info.id_user+`','`+info.id_friend+`','1','`+res[0][0].names+`')`)
-                return data ;
+                console.log(info)
+                await sequelize.query("UPDATE connect_friends SET [status]= '1' WHERE id_user= '" +info.id_friend +"' AND  id_friend = '" + info.id_user+"'" );
+                let res = await sequelize.query("SELECT names FROM users WHERE id_user = '" + info.id_user + "'" );
+            
+                let data = await sequelize.query(`INSERT INTO connect_friends (id_friend, id_user, [status], names) VALUES ('`+info.id_friend+`','`+info.id_user+`','1','`+res[0][0].names+`')`)
+                return data;
             }
             catch{
-                return false;
+                return new error;
             }
         } 
     }

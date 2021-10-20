@@ -39,7 +39,7 @@
                         <div class="info" style="display: flex; justify-content:space-around; align-items: center;">
                             <h4><%= friendsreq[i].names %> </h4>
                             <p>
-                                <button class="btn btn-dark" onclick="accept('<%=friendsreq[i].id_friend %>','<%=data.data.id_user %>')">Aceptar</button>
+                                <button class="btn btn-dark" onclick="accept('<%=friendsreq[i].id_user %>','<%= data.data.id_user %>')">Aceptar</button>
                                 
                             </p>
                         </div>
@@ -108,7 +108,7 @@
         return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     };
 
-    async function accept(id_friend,id_user,name){
+    async function accept(id_friend,id_user){
 
         let request = {
             id_user: id_user,
