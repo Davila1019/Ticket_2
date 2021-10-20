@@ -8,6 +8,7 @@ const indexView = require('./back/view/indexView')
 const registerView = require('./back/view/registerView');
 const friendView = require('./back/view/friendsView')
 const loginView = require('./back/view/loginView')
+const userView = require('./back/view/userView')
 const app = express();
 app.use(express.json())
 app.use(express.urlencoded({extended:false  }))
@@ -38,3 +39,4 @@ indexView(app);
 registerView(app);
 friendView(app);
 loginView(app);
+userView(app);

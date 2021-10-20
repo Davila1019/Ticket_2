@@ -1,3 +1,5 @@
+<%- include('./index'); %>
+
 <!DOCTYPE html>
 <html lang="es">
 <!-- HEAD -->
@@ -13,100 +15,25 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title>DevsCore </title>
 </head>
-<body class="app sidebar-mini">
-<!-- Nav-->
-<nav>
-    <header class="app-header">
-        <a class="app-header__logo" href="/">DevsCore</a>
-        <!-- Sidebar toggle button-->
-        <a class="app-sidebar__toggle" href="#" data-toggle="sidebar"></a>
-        <!-- Nav Right Menu-->
-        <ul class="app-nav">
-            <li class="app-search">
-                <form  method="get" action="/panel">
-                    <input class="app-search__input" type="search" name="busqueda"
-                           placeholder="Buscar Post">
-                    <button class="app-search__button" type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </form>
-
-            </li>
-            <!-- User Menu-->
-            <li class="dropdown"><a class="app-nav__item" href="#"
-                                    data-toggle="dropdown"><i class="fa fa-user fa-lg"></i> Perfil</a>
-                <ul class="dropdown-menu settings-menu dropdown-menu-right">
-                    <li><a class="dropdown-item" href="/users/perfil/?username={{ usuario.username }}"><i
-                            class="fa fa-user fa-lg"></i> Perfil </a></li>
-                    <li><a class="dropdown-item" href="/logout" id="logout"><i
-                            class="fa fa-sign-out fa-lg"></i> Cerrar sesion </a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </header>
-    <!-- Sidebar menu-->
-    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
-    <aside class="app-sidebar">
-        <div class="app-sidebar__user">
-            <img class="app-sidebar__user-avatar"
-                 src="https://ssl.gstatic.com/images/branding/product/1x/avatar_circle_blue_512dp.png"
-                 alt="User Image" width="48" height="48">
-            <div>
-
-
-            </div>
-        </div>
-        <ul class="app-menu">
-            <li><a class="app-menu__item" href="/"><i
-                    class="app-menu__icon fa fa-dashboard"></i><span
-                    class="app-menu__label">Panel</span></a></li>
-            <li class="treeview"><a id="posts" class="app-menu__item" href="#"
-                                    data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span
-                    class="app-menu__label">Mis datos</span><i
-                    class="treeview-indicator fa fa-angle-right"></i></a>
-                <ul class="treeview-menu" id="desplieguePosts">
-                    <li><a class="treeview-item" href="/agregarInfo"><i
-                            class="icon fa fa-circle-o"></i> Agregar Informacion </a></li>
-                    <li><a class="treeview-item" href="/editInfo"><i
-                            class="icon fa fa-circle-o"></i> Editar Informacion </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview"><a id="usuarios" class="app-menu__item" href="#"
-                                    data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span
-                    class="app-menu__label">Amigos</span><i
-                    class="treeview-indicator fa fa-angle-right"></i></a>
-                <ul class="treeview-menu" id="despliegueUsuarios">
-                    <li><a class="treeview-item" href="/views/users/lista-amigos.html"><i
-                            class="icon fa fa-circle-o"></i> Mis amigos </a></li>
-                    <li><a class="treeview-item" href="/views/users/lista-peticiones.html"><i
-                            class="icon fa fa-circle-o"></i> Peticiones de amistad </a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </aside>
-</nav>
-
-    <!-- Contenido -->
+<body>
     <main class="app-content">
+        <form action="/editUser" method="POST">
         <fieldset>
             <legend>Mis datos </legend>
             <label class="control-label">Nombre(s)</label>
             <input class="form-control" type="text" id="nombres" placeholder="Nombre(s)" autofocus name="username" required="true" >
 
             <label class="control-label">Primer Apellido</label>
-            <input class="form-control" type="text" id="primerA" placeholder="Primer Apellido" autofocus name="username" required="true" >
+            <input class="form-control" type="text" id="primerA" placeholder="Primer Apellido" autofocus name="lastname" required="true" >
 
             <label class="control-label">Segundo Apellido</label>
-            <input class="form-control" type="text" id="segundoA" placeholder="Segundo Apellido" autofocus name="username" required="true" >
+            <input class="form-control" type="text" id="segundoA" placeholder="Segundo Apellido" autofocus name="s_lastname" required="true" >
 
             <label class="control-label">Email</label>
             <input class="form-control" id="email" type="email" placeholder="Email" autofocus name="email">
 
             <label class="control-label">Imagen de perfil</label>                
-            <input class="form-control" type="file" name="myFoto" accept="image/png, image/jpeg">
+            <input class="form-control" type="file" name="image" accept="image/png, image/jpeg" enctype="multipart/form-data">
 
             <label  class="control-label">Fecha de nacimiento:</label>
             <input class="form-control" type="date" id="fechaNacimiento" name="trip-start" value="2018-07-22"
@@ -115,6 +42,7 @@
 
            <br>
 
+           
            <fieldset>
             <legend>Lugares de residencia </legend>
             <label class="control-label">Pais</label>
@@ -360,33 +288,14 @@
                    name="city" >
            </fieldset>
 
-           <fieldset>
-            <legend>Informacion profesional </legend>
-            <label class="control-label">Linkedin</label>
-                <input type="text" id="linkedin" placeholder="Linkedin" autofocus name="linkedin"   >
-
-            <label class="control-label">Git Hub</label>
-            <input type="text" id="github" placeholder="Git Hub" autofocus name="github" >
-           </fieldset>
-
-           <fieldset>
-            <legend>Formacion profesional </legend>
-            <label class="control-label">Estudios</label>
-            <input type="text" id="studies" placeholder="Estudios" autofocus name="studies"  >
-
-            <label class="control-label">Idiomas</label>
-            <input type="text" id="idiom" placeholder="Idioma" autofocus name="idiom"  >
-           </fieldset>
-
-           <fieldset>
-            <legend>Hobbies </legend>
-            <label class="control-label">Agregar hobbies</label>
-            <input type="text" id="hobbies" placeholder="Hobbies" autofocus name="hobbies">
-           </fieldset>
-           <br>
            
-        </fieldset>
-            <input type="button" class="btn btn-success btn-icon-split" value="Guardar Cambios"  id="btnEditCambios">
+
+           
+
+           
+           <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+
+    </form>
 
     </main>
 <!-- JS -->
