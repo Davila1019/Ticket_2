@@ -1,3 +1,4 @@
+<%- include('./index'); %>
 <!DOCTYPE html>
 <html lang="es">
 <!-- HEAD -->
@@ -14,83 +15,8 @@
     
     <title>DevsCore </title>
 </head>
-<body class="app sidebar-mini">
-<!-- Nav-->
-<nav>
-    <header class="app-header">
-        <a class="app-header__logo" href="/">DevsCore</a>
-        <!-- Sidebar toggle button-->
-        <a class="app-sidebar__toggle" href="#" data-toggle="sidebar"></a>
-        <!-- Nav Right Menu-->
-        <ul class="app-nav">
-            <li class="app-search">
-                <form  method="get" action="/panel">
-                    <input class="app-search__input" type="search" name="busqueda"
-                           placeholder="Buscar Post">
-                    <button class="app-search__button" type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </form>
 
-            </li>
-            <!-- User Menu-->
-            <li class="dropdown"><a class="app-nav__item" href="#"
-                                    data-toggle="dropdown"><i class="fa fa-user fa-lg"></i> Perfil</a>
-                <ul class="dropdown-menu settings-menu dropdown-menu-right">
-                    <li><a class="dropdown-item" href="/users/perfil/?username={{ usuario.username }}"><i
-                            class="fa fa-user fa-lg"></i> Perfil </a></li>
-                    <li><a class="dropdown-item" href="/logout" id="logout"><i
-                            class="fa fa-sign-out fa-lg"></i> Cerrar sesion </a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </header>
-    <!-- Sidebar menu-->
-    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
-    <aside class="app-sidebar">
-        <div class="app-sidebar__user">
-            <img class="app-sidebar__user-avatar"
-                 src="https://ssl.gstatic.com/images/branding/product/1x/avatar_circle_blue_512dp.png"
-                 alt="User Image" width="48" height="48">
-           
-            <div>
-                <h4 style="color: aliceblue;"><%= data.data.names %> </h4>
-                <h6 style="color: aliceblue;"><%= data.data.f_last_name %> <%= data.data.s_last_name %>  </h6>
 
-            </div>
-        </div>
-        <ul class="app-menu">
-            <li><a class="app-menu__item" href="/"><i
-                    class="app-menu__icon fa fa-dashboard"></i><span
-                    class="app-menu__label">Panel</span></a></li>
-            <li class="treeview"><a id="posts" class="app-menu__item" href="#"
-                                    data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span
-                    class="app-menu__label">Mis datos</span><i
-                    class="treeview-indicator fa fa-angle-right"></i></a>
-                <ul class="treeview-menu" id="desplieguePosts">
-                    <li><a class="treeview-item" href=""><i
-                            class="icon fa fa-circle-o"></i> Agregar Informacion </a></li>
-                    <li><a class="treeview-item" href="/post/list"><i
-                            class="icon fa fa-circle-o"></i> Editar Informacion </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview"><a id="usuarios" class="app-menu__item" href="#"
-                                    data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span
-                    class="app-menu__label">Amigos</span><i
-                    class="treeview-indicator fa fa-angle-right"></i></a>
-                <ul class="treeview-menu" id="despliegueUsuarios">
-                    <li><a class="treeview-item" type="button" href= "myFriends/<%= data.data.id_user %> "  ><i
-                            class="icon fa fa-circle-o"></i> Mis amigos </a></li>
-                    <li><a class="treeview-item" href="/views/users/lista-peticiones.html"><i
-                            class="icon fa fa-circle-o"></i> Peticiones de amistad </a> </li>
-                    
-                </ul>
-            </li>
-        </ul>
-    </aside>
-</nav>
     <!-- Contenido -->
     <main class="app-content"> <!-- Titulo-Cabecera -->
         <div class="app-title">
@@ -101,25 +27,29 @@
                 <p>A el lugar donde todos nos conectamos</p>
             </div>
         </div>
+        
         <% if(friends.length > 0) {%>
             
         <div class="row" style="display: flex; justify-content: space-around; align-items: center; ">
             <% for(let i =0 ; i < friends.length ; i++) {%> 
-            <div class="col-md-6 col-lg-4">
-                
-                <div class="widget-small primary coloured-icon">
-                    <i class="icon fa fa-users fa-3x"></i>
+                <% if(friends[i].id_user != data.data.id_user) {%> 
+                <div class="col-md-6 col-lg-4">
                     
-                    <div class="info" style="display: flex; justify-content:space-around; align-items: center;">
-                        <h4><%= friends[i].names %> </h4>
-                        <p>
-                            <button class="btn btn-dark" onclick="sendReq( )">Agregar</button>
-                        </p>
+                    <div class="widget-small primary coloured-icon">
+                        <i class="icon fa fa-users fa-3x"></i>
+                        
+                        <div class="info" style="display: flex; justify-content:space-around; align-items: center;">
+                            <h4><%= friends[i].names %> </h4>
+                            <p>
+                                <button class="btn btn-dark" onclick="sendReq( '<%- friends[i].id_user%>','<%-  data.data.id_user %>','<%- data.data.names%>' )">Agregar</button>
+                                
+                            </p>
+                        </div>
+                            
                     </div>
                     
                 </div>
-                
-            </div>
+                <% } else{}%> 
             <% } %> 
         <% } else { %> 
             <div class="col-md-6 col-lg-3">
@@ -196,11 +126,10 @@
         },
         body: JSON.stringify(request)
         });
-        console.log(sendReq)
+        
     }
-
 </script>
 
-</body>
+
 
 </html>

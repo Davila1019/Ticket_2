@@ -29,7 +29,7 @@
                 <ul class="dropdown-menu settings-menu dropdown-menu-right">
                     <li><a class="dropdown-item" href="/users/perfil/?username={{ usuario.username }}"><i
                             class="fa fa-user fa-lg"></i> Perfil </a></li>
-                    <li><a class="dropdown-item" href="/logout" id="logout"><i
+                    <li><a class="dropdown-item" onclick="delAut()" id="logout"><i
                             class="fa fa-sign-out fa-lg"></i> Cerrar sesion </a>
                     </li>
                 </ul>
@@ -66,12 +66,12 @@
                     class="app-menu__label">Amigos</span><i
                     class="treeview-indicator fa fa-angle-right"></i></a>
                 <ul class="treeview-menu" id="despliegueUsuarios">
-                    <li><a class="treeview-item" href="myFriends/<%= data.data.id_user %> "  ><i
+                    <li><a class="treeview-item" href="/myFriends/<%= data.data.id_user %> "  ><i
                             class="icon fa fa-circle-o"></i> Mis amigos </a></li>
-                    <li><a class="treeview-item" href="/views/users/lista-peticiones.html"><i
+                    <li><a class="treeview-item" href="/friendsRequest/<%= data.data.id_user %> "><i
                             class="icon fa fa-circle-o"></i> Peticiones de amistad </a>
                     </li>
-                    <li><a class="treeview-item" href="/views/users/lista-peticiones.html"><i
+                    <li><a class="treeview-item" href="/allFriends"><i
                             class="icon fa fa-circle-o"></i> Buscar amigos </a>
                     </li>
                 </ul>
@@ -135,6 +135,13 @@
         let cookies = document.cookies;
         console.log(cookies);
         alert(document.cookie);
+    }
+
+    function delAut(){
+        document.cookie.split(";").forEach(function(c) {
+          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+        });
+        window.location = '/login'
     }
 </script>
 

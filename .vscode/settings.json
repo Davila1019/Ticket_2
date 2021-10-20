@@ -1,0 +1,20 @@
+{
+    "sqltools.connections": [
+        {
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 1433,
+            "driver": "MSSQL",
+            "database": "social",
+            "username": "sa",
+            "password": "tecla",
+            "name": "DdSocial",
+            "group": "A"
+        }
+    ]
+}

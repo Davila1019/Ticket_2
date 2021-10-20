@@ -35,7 +35,7 @@ module.exports.acceptRequest = async(info) => {
         return "Ahora están conectados!";
     }
     else{
-        console.log("error 123");
+        return data;
     }
 }
 
