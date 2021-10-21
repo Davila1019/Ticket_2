@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const sequileze = require('./back/db/conexion');
 const cookieParser = require('cookie-parser')
+const multer  = require('multer')
 
 const indexView = require('./back/view/indexView')
 const registerView = require('./back/view/registerView');

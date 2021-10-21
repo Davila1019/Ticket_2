@@ -12,3 +12,14 @@ module.exports.get = async(email) => {
         console.log("error");
     }
 }
+
+module.exports.update = async(id,user,path) => {
+    let update = new userModel();
+    let data = await update.update(id,user,path)
+    if(data){
+        return data
+    }
+    else{
+        console.log("error")
+    }
+}

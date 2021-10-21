@@ -31,7 +31,7 @@ async function getProfile() {
     let card = `
 
                 <div class="d-flex flex-column align-items-center text-center">
-                <img src="data:image/png;base64,"alt="Admin" class="rounded-circle" width="150">
+                <img src='imgs/horizontal_on_white_by_logaster-2.png'>
                 <div class="mt-3">
                 <h4>${data.names}</h4>
                 

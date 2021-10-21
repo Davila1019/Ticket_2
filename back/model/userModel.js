@@ -12,5 +12,25 @@ module.exports = class userModel {
         } else {
             return false;
         }
+    };
+
+    async update(id,user,path){
+        let img = path
+        let newData = [
+            user.city,
+            user.pais,
+            user.linkedin,
+            user.git,
+            id,
+            img
+        ]
+        let date = new Date(user.date);
+        console.log(date)
+        await sequelize.query("UPDATE users SET names='" + user.username + "', f_last_name='" + user.lastname + "', s_last_name='" + user.s_lastname + "', email='" + user.email + "',  date_of_birth= CAST('" + user.date + "' AS DATETIME)  WHERE id_user = '" + id + "'");
+        let data = await sequelize.query("SELECT * FROM data_users WHERE id_us_da = '" + id + "'");
+        
+            await sequelize.query(`INSERT INTO data_users (city, country, linkedin, github, id_us_da, image) VALUES (?,?,?,?,?,?)`,
+            {replacements: newData, type: sequelize.QueryTypes.SELECT});
+        
     }
 }
