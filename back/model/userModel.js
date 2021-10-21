@@ -29,8 +29,14 @@ module.exports = class userModel {
         await sequelize.query("UPDATE users SET names='" + user.username + "', f_last_name='" + user.lastname + "', s_last_name='" + user.s_lastname + "', email='" + user.email + "',  date_of_birth= CAST('" + user.date + "' AS DATETIME)  WHERE id_user = '" + id + "'");
         let data = await sequelize.query("SELECT * FROM data_users WHERE id_us_da = '" + id + "'");
         
+           if(data[0].length == 0){
             await sequelize.query(`INSERT INTO data_users (city, country, linkedin, github, id_us_da, image) VALUES (?,?,?,?,?,?)`,
             {replacements: newData, type: sequelize.QueryTypes.SELECT});
+           }
+           else{
+            await sequelize.query("UPDATE data_users SET city='" + user.city + "', country='" + user.pais + "', linkedin='" + user.linkedin + "', github='" + user.git + "',  image= '" + img + "'  WHERE id_user = '" + id + "'");
+   
+           }
         
     }
 }
