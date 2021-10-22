@@ -37,7 +37,7 @@ module.exports = class registerModel{
     async getMyFriends(iduser){
         
         try{
-            let result = await sequelize.query("SELECT id_friend, names FROM connect_friends WHERE '"+ iduser +"' = connect_friends.id_friend AND [status] = '1'");
+            let result = await sequelize.query("SELECT id_friend, names, id_user FROM connect_friends WHERE '"+ iduser +"' = connect_friends.id_friend AND [status] = '1'");
             return result;
         }
         catch{

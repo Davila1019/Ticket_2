@@ -19,8 +19,8 @@
     "express-formidable": "^1.2.0",
     "express-rate-limit": "^5.4.1",
     "multer": "^1.4.3",
-    "node": "^16.10.0",
-    "nodemon": "^2.0.13",
+    "node": "^16.12.0",
+    "nodemon": "^2.0.14",
     "sequelize": "^6.7.0",
     "tedious": "^13.1.0",
     "util": "^0.12.4"

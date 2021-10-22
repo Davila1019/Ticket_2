@@ -1,4 +1,5 @@
 <%- include('./index'); %>
+
 <!DOCTYPE html>
 <html lang="es">
 <!-- HEAD -->
@@ -7,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSS-->
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap1.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap1.css">
     <!-- Font-awesome-->
     <link rel="stylesheet" type="text/css"
           href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -49,87 +50,51 @@
                     </div>
                     
                 </div>
-                <% } else{}%> 
+                <% }%> 
             <% } %> 
         <% } else { %> 
             <div class="col-md-6 col-lg-3">
                 <div class="widget-small danger coloured-icon">
                     <i class="icon fa fa-comment fa-3x"></i>
-                    <div class="info">
-                        <h4>Ooopss!</h4>
-                        <p>
-                            <b>Parece que aun no tienes amigos</b>
-                        </p>
+                        <div class="info">
+                            <h4>Ooopss!</h4>
+                            <p>
+                                <b>Parece que aun no hay amigos</b>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    <% } %> 
-        <br>
-    
-    
-    
+        <% } %>   
     </main>
         
-<!-- JS -->
-<script src="/js/jquery-3.2.1.min.js"></script>
-<script src="/js/popper.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src = "/js/main.js"></script>
+        <!-- JS -->
+        <script src="/public/js/jquery-3.2.1.min.js"></script>
+        <script src="/public/js/popper.min.js"></script>
+        <script src="/public/js/bootstrap.min.js"></script>
+        <script src = "/public/js/main.js"></script>
 
-<script>
-    var mensaje = getUrlParameter('mensaje');
-    var tipoMensaje = getUrlParameter('tipoMensaje');
-    if (mensaje != "") {
-        if (tipoMensaje == "") {
-            tipoMensaje = 'alert-info';
-            $.notify({
-                title: "",
-                message: mensaje,
-                icon: 'fa fa-check'
-            },{
-                type: "info"
+        <script>
+        async function sendReq(id_friend,id_user,name){
+
+            let request = {
+                id_friend: id_friend,
+                id_user: id_user,
+                status: 0,
+                name : name
+            }
+            console.log(request);
+            let res = await fetch('http://localhost:2500/friends', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(request)
             });
-        }else if(tipoMensaje == "error"){
-            $.notify({
-                title: "Error: ",
-                message: mensaje,
-                icon: 'fa fa-error'
-            },{
-                type: "danger"
-            });
+            
         }
+        </script>
 
-
-    }
-
-    function getUrlParameter(name) {
-        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-        var results = regex.exec(location.search);
-        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-    };
-
-    async function sendReq(id_friend,id_user,name){
-
-        let request = {
-            id_friend: id_friend,
-            id_user: id_user,
-            status: 0,
-            name : name
-        }
-        console.log(request);
-        let res = await fetch('http://localhost:2500/friends', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(request)
-        });
-        
-    }
-</script>
-
-
+</body>
 
 </html>

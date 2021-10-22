@@ -14,6 +14,15 @@ module.exports = class userModel {
         }
     };
 
+    async findFriend (id){
+        let result = await sequelize.query("SELECT names, f_last_name, s_last_name, email,  cast(datediff(dd,date_of_birth,GETDATE()) / 365.25 as int) as age  FROM users WHERE id_user = '" + id + "'");
+        if (result[0].length > 0) {
+                return result[0][0];
+        } else {
+            return false;
+        }
+    };
+
     async update(id,user,path){
         let img = path
         let newData = [

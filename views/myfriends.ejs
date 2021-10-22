@@ -39,6 +39,9 @@
                             
                             <div class="info" style="display: flex; justify-content:space-around; align-items: center;">
                                 <h4><%= dataf[i].names %> </h4>
+                                <p>
+                                    <button class="btn btn-dark" onclick="viewP('<%= dataf[i].id_user %>')">Ver Perfil</button>
+                                </p>
                                 
                             </div>
                                 
@@ -61,37 +64,15 @@
 <script src = "js/main.js"></script>
 
 <script>
-    var mensaje = getUrlParameter('mensaje');
-    var tipoMensaje = getUrlParameter('tipoMensaje');
-    if (mensaje != "") {
-        if (tipoMensaje == "") {
-            tipoMensaje = 'alert-info';
-            $.notify({
-                title: "",
-                message: mensaje,
-                icon: 'fa fa-check'
-            },{
-                type: "info"
-            });
-        }else if(tipoMensaje == "error"){
-            $.notify({
-                title: "Error: ",
-                message: mensaje,
-                icon: 'fa fa-error'
-            },{
-                type: "danger"
-            });
-        }
-
-
+    async function viewP(id){
+        let res = await fetch('http://localhost:2500/userf/'+id, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        });
+        location.href = '/friendProfile'
     }
-
-    function getUrlParameter(name) {
-        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-        var results = regex.exec(location.search);
-        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-    };
 
 </script>
 
