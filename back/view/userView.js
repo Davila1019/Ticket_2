@@ -2,15 +2,16 @@ const userController = require('../controller/userController')
 const jwt = require('jsonwebtoken');
 const {promisify} = require('util');
 const upload = require('../middlewares/storage')
+const isAuthenticated = require('../middlewares/isAuthenticated')
 module.exports = async (app) => {
     
-    app.get('/user/:email',async(req,res) => {
+    app.get('/user/:email',isAuthenticated.isAuthenticated,async(req,res) => {
         let email = req.params.email
         let data = await userController.get(email);
         res.send(data)
     });
 
-    app.get('/userf/:id',async(req,res) => {
+    app.get('/userf/:id',isAuthenticated.isAuthenticated,async(req,res) => {
         let id = req.params.id
         let data = await userController.find(id);
         const cookieOptions = {

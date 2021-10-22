@@ -9,18 +9,18 @@ module.exports = async (app) => {
         res.render('index',{data})
     });
     
-     app.get('/userProfile',async(req,res) => {
+     app.get('/userProfile',isAuthenticated.isAuthenticated,async(req,res) => {
         const data = await promisify(jwt.verify)(req.cookies.jwt, process.env.KEY)
         res.render('formDatos',{data})
     });
 
-    app.get('/friendProfile',async(req,res) => {
+    app.get('/friendProfile',isAuthenticated.isAuthenticated,async(req,res) => {
         const dataf = await promisify(jwt.verify)(req.cookies.friend, process.env.KEY)
         const data = await promisify(jwt.verify)(req.cookies.jwt, process.env.KEY)
         res.render('friendData',{dataf,data})
     });
     
-     app.get('/editInfo',async(req,res) => {
+     app.get('/editInfo',isAuthenticated.isAuthenticated,async(req,res) => {
         const data = await promisify(jwt.verify)(req.cookies.jwt, process.env.KEY)
         res.render('editInfo',{data})
     });
